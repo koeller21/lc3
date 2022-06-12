@@ -4,11 +4,12 @@ import (
 	"fmt"
 	hw "lc3/lc3_hw"
 	instruction "lc3/lc3_inst"
+	utils "lc3/lc3_utils"
 	"os"
 )
 
 func read_image(image_name string) bool {
-
+	return true
 }
 
 func load_vm_images() {
@@ -29,10 +30,6 @@ func load_vm_images() {
 
 }
 
-func mem_read(address uint16) uint16 {
-	return 12
-}
-
 func cpu() {
 
 	// exactly one condition flag should be set at any
@@ -49,7 +46,7 @@ func cpu() {
 
 		// --- FETCH
 		// get instruction at memory address pointed to by PC
-		var instr uint16 = mem_read(hw.Reg[hw.R_PC])
+		var instr uint16 = utils.Mem_read(hw.Reg[hw.R_PC])
 		// increase PC
 		hw.Reg[hw.R_PC] = hw.Reg[hw.R_PC] + 1
 
@@ -99,7 +96,12 @@ func cpu() {
 
 func main() {
 
-	// cpu()
-	fmt.Println(4 >> 1)
+	//cpu()
+	//
+
+	b := 0b0000100000000000
+	s := fmt.Sprintf("%b", b)
+	fmt.Println(s)
+	instruction.Jsr(uint16(b))
 
 }
