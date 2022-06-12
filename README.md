@@ -1,1 +1,1 @@
-# lc3
+### A golang-based implementation of the LC3 ISA
